@@ -1,4 +1,12 @@
+import 'dart:async';
+import 'dart:math';
+
+import 'package:speech_to_text/speech_recognition_error.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter/material.dart';
+
+import 'speech.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,15 +19,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Scriber',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
@@ -50,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Listener speechListener;
   int _counter = 0;
 
   int _selectedIndex = 0;
@@ -81,24 +81,24 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.article),
-          label: 'My Records',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.remove_red_eye),
-          label: 'Scan in Report',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.mic),
-          label: 'Listen in',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: _onItemTapped,
-    ),
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'My Records',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.remove_red_eye),
+            label: 'Scan in Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mic),
+            label: 'Listen in',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -131,10 +131,15 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            FlatButton(
+              child: Text('Start'),
+              onPressed:
+                  !_hasSpeech || speech.isListening ? null : startListening,
+            ),
           ],
         ),
       ),
-     // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
