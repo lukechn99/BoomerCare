@@ -22,7 +22,7 @@ Doctors turn on Scriber when surveying patients for FHIR medical record data. In
 ## Technology Used
 - Flutter
 - Google OCR
-- Speech-to-text API
+- Speech-to-text library from [csdcorp](https://pub.dev/packages/speech_to_text) installed through [pub.dev](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
 - FHIR API
 
 ## Contributions
