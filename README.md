@@ -8,8 +8,13 @@ In order to run your application, type:
   $ cd .
   $ flutter run
 ```
-Your application code is in .\lib\main.dart.
+Your application code is in .\lib\main.dart.  
 
+Run in terminal with
+```$ flutter emulators``` to check your available emulators  
+```$ flutter emulators --launch <emulator id>``` to chose one to use  
+```$ flutter devices``` to identify the device you are using (not needed)  
+```$ flutter run``` to run main.dart on your emulated device
 
 ## How Our App Works
 Doctors turn on Scriber when surveying patients for FHIR medical record data. Instead of having to multitask and record while listening to their patient, doctors can focus solely on the patient and let Scriber record the information and fill in the records. This saves time and manpower in the medical field. 
