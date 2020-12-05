@@ -13,8 +13,8 @@ Doctors turn on Scriber when surveying patients for FHIR medical record data. In
 - FHIR API
 
 ## Contributions
-Akhil: 
-Ivy: 
-Jeff: 
-Luke: 
-Thao: 
+Akhil:  
+Ivy:  
+Jeff:  
+Luke:  
+Thao:  
