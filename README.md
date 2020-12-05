@@ -2,6 +2,8 @@
 HackDuke 2020
 
 ## How to Run
+Create the React app with this [guide](https://github.com/facebook/create-react-app)  
+**Please reference** this [project](https://github.com/lukechn99/sdc2020-constructionsite/tree/main/sdc-app) for examples and more instructions.  
 Run with react ```npm run``` (probably. we can update the actual instructions later)
 
 ## How Our App Works
