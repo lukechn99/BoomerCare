@@ -6,7 +6,8 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:flutter/material.dart';
 
-import 'speech.dart';
+// import 'speech.dart';
+import 'speech.dart' as sp;
 
 void main() {
   runApp(MyApp());
@@ -49,7 +50,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Listener speechListener;
+  sp.Listener speechListener = new sp.Listener();
+  speechListener.initSpeechState();
   int _counter = 0;
 
   int _selectedIndex = 0;
@@ -69,6 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  void _displayMessage() {
+
   }
 
   @override
@@ -134,7 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
             FlatButton(
               child: Text('Start'),
               onPressed:
-                  !_hasSpeech || speech.isListening ? null : startListening,
+                // on press, start listening and setState with new message
+                // speechListener.startListening(),
             ),
           ],
         ),
