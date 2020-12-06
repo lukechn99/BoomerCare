@@ -28,15 +28,20 @@ Doctors turn on Scriber when surveying patients for FHIR medical record data. In
 - Speech-to-text library from [csdcorp](https://pub.dev/packages/speech_to_text) installed through [pub.dev](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
 - FHIR API
 
-## To-do
-- Edit/delete records
-- Convert to FHIR
-- Enable login
-- Extra languages
-
 ## Contributions
 Akhil: Firebase, image, transitions, textio, viewRecords  
 Ivy: Login, mainpage  
 Jeff:   
 Luke: Speech, speech JSON store, transitions  
 Thao: Speech, Trello  
+
+## Sources
+https://api.dart.dev/stable/2.10.4/index.html
+https://flutter.dev/docs/cookbook/navigation/navigation-basics
+https://pub.dev/packages/speech_to_text
+
+## To-do
+- Edit/delete records
+- Convert to FHIR
+- Enable login
+- Extra languages
