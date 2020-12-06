@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
-import 'package:scriber/pages/home.dart';
+import 'package:scriber/home.dart';
 
 // dummy code - user info stored using Firebase?
 const users = const {
