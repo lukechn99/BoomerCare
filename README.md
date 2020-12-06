@@ -36,11 +36,11 @@ Luke Chen: Speech, speech JSON store, transitions
 Thao Moua: Speech, Trello  
 
 ## Resources
-https://api.dart.dev/stable/2.10.4/index.html
-https://flutter.dev/docs/cookbook/navigation/navigation-basics
-https://pub.dev/packages/speech_to_text
-https://healthitanalytics.com/news/4-basics-to-know-about-the-role-of-fhir-in-interoperability
-https://github.com/fhir-fli/fhir/tree/main/lib/r4
+https://api.dart.dev/stable/2.10.4/index.html  
+https://flutter.dev/docs/cookbook/navigation/navigation-basics  
+https://pub.dev/packages/speech_to_text  
+https://healthitanalytics.com/news/4-basics-to-know-about-the-role-of-fhir-in-interoperability  
+https://github.com/fhir-fli/fhir/tree/main/lib/r4  
 
 ## To-do
 - Edit/delete records
