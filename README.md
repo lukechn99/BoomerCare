@@ -32,6 +32,7 @@ Doctors turn on Scriber when surveying patients for FHIR medical record data. In
 - Edit/delete records
 - Convert to FHIR
 - Enable login
+- Extra languages
 
 ## Contributions
 Akhil: Firebase, image, transitions, textio, viewRecords  
