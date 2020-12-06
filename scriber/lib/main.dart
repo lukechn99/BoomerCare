@@ -22,12 +22,59 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/**
+ * landing screen comes after login
+ * if a user logs out, it should lead back
+ * to the login page
+ */
+class LandingScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mainpage'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'My Records',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.remove_red_eye),
+            label: 'Scan in Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mic),
+            label: 'Listen in',
+          ),
+        ],
+        // currentIndex: _selectedIndex,
+        // selectedItemColor: Colors.amber[800],
+        // onTap: _listen,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text('Open route'),
+          onPressed: () {
+            // Navigate to second route when tapped.
+          },
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Should other pages besides login and 
+ */
 class SpeechScreen extends StatefulWidget {
   @override
   _SpeechScreenState createState() => _SpeechScreenState();
 }
 
 class _SpeechScreenState extends State<SpeechScreen> {
+  String text_message;
   final Map<String, HighlightedWord> _highlights = {
     'flutter': HighlightedWord(
       onTap: () => print('flutter'),
@@ -113,7 +160,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
         ],
         // currentIndex: _selectedIndex,
         // selectedItemColor: Colors.amber[800],
-        // onTap: _onItemTapped,
+        // onTap: _listen,
       ),
       body: SingleChildScrollView(
         reverse: true,
@@ -133,6 +180,8 @@ class _SpeechScreenState extends State<SpeechScreen> {
     );
   }
 
+  void cache(String text_message) {}
+
   void _listen() async {
     if (!_isListening) {
       bool available = await _speech.initialize(
@@ -144,6 +193,7 @@ class _SpeechScreenState extends State<SpeechScreen> {
         _speech.listen(
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
+            text_message += _text;
             if (val.hasConfidenceRating && val.confidence > 0) {
               _confidence = val.confidence;
             }
