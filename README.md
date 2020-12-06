@@ -29,11 +29,11 @@ Doctors turn on Scriber when surveying patients for FHIR medical record data. In
 - FHIR API
 
 ## Contributions
-Akhil: Firebase, image, transitions, textio, viewRecords  
-Ivy: Login, mainpage  
+Akhil Talasila: Firebase, image, transitions, textio, viewRecords  
+Ivy Wang: Login, mainpage  
 Jeff:   
-Luke: Speech, speech JSON store, transitions  
-Thao: Speech, Trello  
+Luke Chen: Speech, speech JSON store, transitions  
+Thao Moua: Speech, Trello  
 
 ## Sources
 https://api.dart.dev/stable/2.10.4/index.html
