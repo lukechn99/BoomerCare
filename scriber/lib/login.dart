@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
-import 'package:scriber/home.dart';
+import 'package:scriber/main.dart';
 
 // dummy code - user info stored using Firebase?
 const users = const {
@@ -34,7 +34,10 @@ class LoginScreen extends FlutterLogin {
       title: 'Scriber',
       onLogin: _authUser,
       onSubmitAnimationCompleted: () {
-        Navigator.pushNamed(context, '/home');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LandingScreen()),
+        );
       },
     );
   }
