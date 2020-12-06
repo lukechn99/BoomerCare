@@ -6,6 +6,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;       // page number
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -26,7 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Listen in',
           ),
         ],
-        selectedItemColor: Colors.amber[800],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
