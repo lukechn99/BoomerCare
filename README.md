@@ -4,14 +4,14 @@ HackDuke 2020
 ## How to Run
 The application code is in .\lib\main.dart.  
 
-*How to get Google Firebase API Key*  
+***How to get Google Firebase API Key***  
 inside of ```android >> app```, add a ```google-services.json``` with the API keys to use Firebase.  
 To generate this file, make a Firebase app through Firebase and activate the ImageTextRecognition API with the following steps:  
 1. create a project through Firebase that has the ImageTextRecognition API activated.  
 2. create app
 3. get google-services.json
 
-*Run in terminal with*  
+***Run in terminal with***  
 ```$ flutter doctor``` for information about installing additional components  
 ```$ flutter emulators``` to check your available emulators  
 ```$ flutter emulators --launch <emulator id>``` to chose one to use  
