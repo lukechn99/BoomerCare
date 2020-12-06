@@ -19,7 +19,6 @@ class _ScanScreenState extends State<ScanScreen> {
 
   var result = "";
   File _userImageFile;
-  int _selectedIndex = 1;
 
   TextEditingController _controllerKey, _controllerValue;
 
@@ -124,12 +123,6 @@ class _ScanScreenState extends State<ScanScreen> {
     recogniseText();
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,25 +137,6 @@ class _ScanScreenState extends State<ScanScreen> {
             ),
           ),
         ),
-      bottomNavigationBar: BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.article),
-          label: 'My Records',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.remove_red_eye),
-          label: 'Scan in Report',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.mic),
-          label: 'Listen in',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
-      onTap: _onItemTapped,
-    ),
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
