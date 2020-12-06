@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:scriber/scan.dart';
 import 'package:highlight_text/highlight_text.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -17,9 +18,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SpeechScreen(),
+      // home: MyHomePage(title: 'Scriber'),
+      home: LandingScreen(),
     );
   }
+}
+
+class LandingScreen extends StatefulWidget {
+  String title = "Landing Screen";
+
+  @override
+  _LandingScreenState createState() => _LandingScreenState();
 }
 
 /**
@@ -27,12 +36,24 @@ class MyApp extends StatelessWidget {
  * if a user logs out, it should lead back
  * to the login page
  */
-class LandingScreen extends StatelessWidget {
+class _LandingScreenState extends State<LandingScreen> {
+  int _selectedIndex = 0;
+  final List<Widget> _children = [
+   ScanScreen(),
+   ScanScreen(),
+   SpeechScreen(),
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mainpage'),
+        title: Text('Scriber'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -49,18 +70,11 @@ class LandingScreen extends StatelessWidget {
             label: 'Listen in',
           ),
         ],
-        // currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex,
         // selectedItemColor: Colors.amber[800],
-        // onTap: _listen,
+        onTap: _onItemTapped,
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Open route'),
-          onPressed: () {
-            // Navigate to second route when tapped.
-          },
-        ),
-      ),
+      body: _children[_selectedIndex],
     );
   }
 }
@@ -142,25 +156,6 @@ class _SpeechScreenState extends State<SpeechScreen> {
           onPressed: _listen,
           child: Icon(_isListening ? Icons.mic : Icons.mic_none),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.article),
-            label: 'My Records',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.remove_red_eye),
-            label: 'Scan in Report',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mic),
-            label: 'Listen in',
-          ),
-        ],
-        // currentIndex: _selectedIndex,
-        // selectedItemColor: Colors.amber[800],
-        // onTap: _listen,
       ),
       body: SingleChildScrollView(
         reverse: true,
