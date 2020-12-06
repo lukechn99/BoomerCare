@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: MyHomePage(title: 'Scriber'),
-      home: LoginScreen(),
+      home: LandingScreen(),
+      // home: LoginScreen(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'package:path_provider/path_provider.dart';
 
 const String kFileName = 'data.json';
 
-class TextIo{
+class TextIo {
   File _filePath;
   bool _fileExists;
 
-  Map<String, dynamic> json = {"documents":[]};
+  Map<String, dynamic> json = {"documents": []};
   String _jsonString;
 
   Future<String> get _localPath async {
@@ -77,5 +77,4 @@ class TextIo{
     //4. Write _jsonString to the _filePath
     _filePath.writeAsString(_jsonString);
   }
-
 }

@@ -1,8 +1,9 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:scriber/scan.dart';
+import 'package:scriber/textio.dart';
 import 'package:highlight_text/highlight_text.dart';
 import 'package:scriber/viewRecords.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class SpeechScreen extends StatefulWidget {
@@ -11,7 +12,7 @@ class SpeechScreen extends StatefulWidget {
 }
 
 class _SpeechScreenState extends State<SpeechScreen> {
-  String text_message;
+  String textmessage;
   final Map<String, HighlightedWord> _highlights = {
     'flutter': HighlightedWord(
       onTap: () => print('flutter'),
@@ -54,11 +55,16 @@ class _SpeechScreenState extends State<SpeechScreen> {
   bool _isListening = false;
   String _text = 'Press the button and start speaking';
   double _confidence = 1.0;
+  double _time = 0.0;
+  int unknownpatients = 0;
+  TextIo model;
 
   @override
   void initState() {
     super.initState();
     _speech = stt.SpeechToText();
+    model = new TextIo();
+    model.readJson();
   }
 
   @override
@@ -98,7 +104,30 @@ class _SpeechScreenState extends State<SpeechScreen> {
     );
   }
 
-  void cache(String text_message) {}
+  /// assuming first two words are the first and last
+  /// names of the patient
+  void store(String textmessage) {
+    List name = textmessage.split(" ");
+    String patient = "";
+    if (name.length < 2) {
+      // create unique identifier for unknown patient
+      patient = "Unknown patient" + unknownpatients.toString();
+      unknownpatients += 1;
+    } else {
+      patient = name[0] + " " + name[1];
+    }
+    Map<String, dynamic> document = {
+      "title": patient,
+      "content": textmessage,
+    };
+    model.addToList(document);
+  }
+
+  void record(SpeechRecognitionResult result) {
+    setState(() {
+      textmessage = "${result.recognizedWords}";
+    });
+  }
 
   void _listen() async {
     if (!_isListening) {
@@ -109,17 +138,22 @@ class _SpeechScreenState extends State<SpeechScreen> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
-          onResult: (val) => setState(() {
-            _text = val.recognizedWords;
-            text_message += _text;
-            if (val.hasConfidenceRating && val.confidence > 0) {
-              _confidence = val.confidence;
-            }
-          }),
-        );
+            onResult: record,
+            //   (val) => setState(() {
+            //   _text = val.recognizedWords;
+            //   // if (_text != null) {
+            //   //   textmessage += _text;
+            //   // }
+            //   if (val.hasConfidenceRating && val.confidence > 0) {
+            //     _confidence = val.confidence;
+            //   }
+            // }),
+            listenFor: Duration(seconds: 20),
+            cancelOnError: true);
       }
     } else {
       setState(() => _isListening = false);
+      store(textmessage);
       _speech.stop();
     }
   }
