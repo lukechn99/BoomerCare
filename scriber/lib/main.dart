@@ -88,13 +88,32 @@ class _SpeechScreenState extends State<SpeechScreen> {
         animate: _isListening,
         glowColor: Theme.of(context).primaryColor,
         endRadius: 75.0,
-        duration: const Duration(milliseconds: 2000),
+        duration: const Duration(seconds: 2000),
         repeatPauseDuration: const Duration(milliseconds: 100),
         repeat: true,
         child: FloatingActionButton(
           onPressed: _listen,
           child: Icon(_isListening ? Icons.mic : Icons.mic_none),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'My Records',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.remove_red_eye),
+            label: 'Scan in Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mic),
+            label: 'Listen in',
+          ),
+        ],
+        // currentIndex: _selectedIndex,
+        // selectedItemColor: Colors.amber[800],
+        // onTap: _onItemTapped,
       ),
       body: SingleChildScrollView(
         reverse: true,

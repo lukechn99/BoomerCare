@@ -49,7 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Listener speechListener;
+  // Listener speechListener;
   int _counter = 0;
 
   int _selectedIndex = 0;
