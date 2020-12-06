@@ -2,6 +2,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:scriber/scan.dart';
 import 'package:highlight_text/highlight_text.dart';
+import 'package:scriber/viewRecords.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 void main() {
@@ -39,7 +40,7 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   int _selectedIndex = 0;
   final List<Widget> _children = [
-   ScanScreen(),
+   ViewDocs(),
    ScanScreen(),
    SpeechScreen(),
   ];
